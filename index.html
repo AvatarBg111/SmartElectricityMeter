@@ -1,0 +1,85 @@
+<html>
+    
+    
+    <head>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="jQuery.js"></script>
+
+        <link rel="icon" href="Website_logo.png"/>
+        <title>Smart Electricity Meter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body{
+                background-image: url("light_effects.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                overflow: hidden;
+            }
+            #logo{
+                position: relative;
+                left: 40%;
+                top: 10px;
+                font-family: "Garamond", serif;
+                color: hsl(190, 100%, 80%);
+            }
+            #version{
+                position: relative;
+                left: -20px;
+                top: -35px;
+            }
+            #button1{
+                position: relative;  /*absolute is a substitute*/
+                left: 112%;
+                top: -30px;
+                height: 50px;
+                margin-top: 5px;
+                margin-left: 10px;
+                padding-right: 50px;
+                padding-left: 50px;
+                text-align: center;
+                background-color: rgba(255,255,255,0.6);
+                border: 1px solid rgb(200, 100, 50);
+                border-radius: 8px;
+                /*outline: 1px solid rgb(200, 100, 50);*/
+                text-shadow: 1px 1px 2px rgb(200, 100, 50);
+                font-family: "Garamond", serif;
+                font-size: 24px;
+            }
+            #button1:hover{
+                background-color: rgba(255, 250, 205, 0.75);
+            }
+            #button1:active{
+                background-color: powderblue;
+            }
+            #electricity_info{
+                background-color: lightsteelblue;
+                border: 3px solid rgb(255,255,255);
+                border-radius: 10px;
+                position: relative;
+                width: 500px;
+                height: 200px;
+                top: 25%;
+                left: 30%;
+            }
+            #form_graph{
+                position: absolute;
+                width: inherit;
+                height: inherit;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <i id="logo"><h1>Умен Електромер</h1><h2 id="version"><br>( Early Access, Version: 0.0.1)</h2></i>
+        <div id="electricity_info">
+            <form method="POST" id="form_graph" action="dbconnect.php">
+                <input id="button1" type="submit" value="Графика"/>
+            </form>
+        </div>
+    </body>
+    
+    
+</html>

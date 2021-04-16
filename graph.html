@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Smart Electricity Meter</title>
+        <link rel="icon" href="Website_logo.png"/>
+        
+        <style>
+            body{
+                /*background-image: linear-gradient(to bottom right, lightgoldenrodyellow, red);*/
+                background-image: url("Chat_room_logo.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+            #consumer_info{
+                width: 50%;
+                color: chartreuse;
+                text-shadow: 1px 1px 1px cornflowerblue;
+                background-image: linear-gradient(to right, khaki, orchid);
+                border-radius: 9px;
+                font-size: 14px;
+                padding-left: 10px;
+            }
+            #graph_back_side{
+                position: absolute;
+                z-index:-1;
+                width: 930px;
+                height: 450px;
+                left: 8px;
+                top: 60px;
+                border: 1px solid darkblue;
+                border-radius: 12px;
+                background-image: linear-gradient(to top left, crimson, indigo, chartreuse);
+            }
+            #consumption_text{
+                color: #ff1a8c;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="graph_back_side"></div>
+    </body>
+</html>
+
+<style>
+
+body {
+  font: 13px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: lavender;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: rgb(232, 140, 19);  /*232, 129, 19orangered*/
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(47, 0, 82, 0.8);
+  color: #fff;
+  border-radius: 7px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+</style>  <!--  -->
+
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script>
+
+var margin = {top: 100, right: 100, bottom: 30, left: 45},
+    width = 980 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
+
+var formatPercent = d3.format(".2");
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(formatPercent);
+
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong id='consumption_text'>Consumption:</strong> <span style='color:lightseagreen'>" + d.powers + "<i style='color:lightseagreen'> W</i>" + "</span>";
+  })
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.call(tip);
+
+d3.csv("daily_consumption.csv", type, function(error, data) {
+  x.domain(data.map(function(d) { return d.hour; }));
+  y.domain([0, d3.max(data, function(d) { return d.powers; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Power W");
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.hour); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.powers); })
+      .attr("height", function(d) { return height - y(d.powers); })
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
+});
+
+function type(d) {
+  d.powers = +d.powers;
+  return d;
+}
+
+</script>

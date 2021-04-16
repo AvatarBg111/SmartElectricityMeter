@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <script src="jQuery.js"></script>
+        <script>
+            $("#show_graph").submit(function(form){
+                form.preventDefault();
+                alert("Chosen consumer: ", document.getElementById("consumer").value);
+                document.getElementById("show_graph").submit();
+            }
+        </script>
+        
+        <link rel="icon" href="Website_logo.png"/>
+        <title>Smart Electricity Meter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body{
+                background-image: url("neon_circle.png");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
+            #graph_menu{
+                position: relative;
+                width: 560px;
+                height: 200px;
+                background-image: linear-gradient(to bottom right, gold, crimson, MediumTurquoise);
+                background-color: transparent;
+                border: 1px solid rgb(30, 30, 30);
+                border-radius: 10px;
+                left: 32%;
+                top: 35%;
+            }
+            #welcome_message1{
+                position: relative;
+                width: fit-content;
+                left: 18%;
+                top: 18px;
+                color: limegreen;
+                text-shadow: 1px 1px 2px darkgray;
+                font-size: 24px;
+            }
+            #welcome_message2{
+                position: relative;
+                left: 4%;
+                top: 38px;
+                color: limegreen;
+                text-shadow: 1px 1px 2px darkgray;
+                font-size: 24px;
+            }
+            #form_info_draw{
+                position: relative;
+                background-image: linear-gradient(to right bottom, red, gold);
+                color: cyan;
+                text-shadow: 1px 1px 1px maroon;
+                font-size: 15px;
+                border: 1px solid mediumspringgreen;
+                border-radius: 3px;
+                margin-top: 45px;
+                margin-bottom: 1px;
+                padding-right: 1px;
+                padding-left: 1px;
+                width: 195px;
+                height: fit-content;
+                left: 23px;
+                top: 5px;
+            }
+            .form_info, option{
+                position: relative;
+                background-color: maroon;
+                color: sandybrown;
+                /*text-shadow: 1px 1px 1px black;*/  /*rgb(255, 255, 255)*/
+                border: 1px solid mediumspringgreen;  /*rgb(150, 150, 255)*/
+                border-radius: 5px;
+                margin-top: 1px;
+                margin-bottom: 1px;
+                padding-right: 8px;
+                padding-left: 8px;
+                padding-bottom: 8px;
+                width: fit-content;
+                height: fit-content;
+                left: 10px;
+                top: 0px;
+            }
+            .show_graph{
+                position: relative;
+                left: 18px;
+                top: 48px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="graph_menu">
+            <i id="welcome_message1">Добре дошли в графичното меню!</i><br>
+            <i id="welcome_message2">Изберете консуматор и дата на потребление:</i>
+            <form id="show_graph" name="show_graph" class="show_graph" method="POST" action="get_consumer_info.php">
+                <label class="form_info" for="consumer">консуматор:</label>
+                <select class="form_info" id="consumer" name="consumer" form="show_graph"></select><br>
+                <label class="form_info" for="date">дата:</label>
+                <input class="form_info" type="date" id="date" name="date"/><br>
+                <input id="form_info_draw" type="submit" value="Изрисувай графика"/>
+            </form>
+        </div>
+    </body>
+</html>
