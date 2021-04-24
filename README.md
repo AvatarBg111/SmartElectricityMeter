@@ -36,4 +36,7 @@ STM32F4 Standard Periphery library and CMSIS library
 ```
 git clone https://github.com/mfauzi/STM32F4/tree/master/STM32F4%20Standard%20Peripheral%20Library
 ```
-## Website
+## Упътвания за използване на сайт
+Уебсайтът е в ранна версия с лимитирани функции.
+За момента има качествени измервания само за 
+12.04.2021 (изберете тази дата, за да видите графика)
