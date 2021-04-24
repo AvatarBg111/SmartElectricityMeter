@@ -16,6 +16,7 @@
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
 * [JavaScript](https://www.javascript.com/)
 * [jQuery](https://jquery.com/)
+* [D3](https://d3js.org/d3.v3.min.js)
 #### Hardware
 * [MCP39F511](http://ww1.microchip.com/downloads/en/DeviceDoc/20005393B.pdf)
 * [STM32F407](https://www.st.com/en/microcontrollers-microprocessors/stm32f407-417.html)
