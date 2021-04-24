@@ -24,14 +24,14 @@
 * [ESP32](https://www.espressif.com/en/products/socs/esp32)
 * [C-The-Lang](https://port70.net/~nsz/c/c11/n1570.html)
 
-# Изисквания и нужни билбиотеки
-## ESP32-WROOM-32D
-#### Espressif IoT Development Framework
+## Изисквания и нужни билбиотеки за Хардуер
+#### ESP32-WROOM-32D
+Espressif IoT Development Framework
 ```
 git clone https://github.com/espressif/esp-idf
 ```
 
-## STM32F407
-#### STM32F4 Standard Periphery library and CMSIS library
+#### STM32F407
+STM32F4 Standard Periphery library and CMSIS library
 ```
 git clone https://github.com/mfauzi/STM32F4/tree/master/STM32F4%20Standard%20Peripheral%20Library
