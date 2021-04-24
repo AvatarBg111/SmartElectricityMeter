@@ -40,6 +40,6 @@ git clone https://github.com/mfauzi/STM32F4/tree/master/STM32F4%20Standard%20Per
 Уебсайтът е в ранна версия с лимитирани функции.
 За момента има качествени измервания само за 
 12.04.2021 (изберете тази дата, за да видите графика)
-#### [Link](http://learningmoorree.000webhostapp.com/) - SmartElectricityMeter
+#### [Link: SmartElectricityMeter](http://learningmoorree.000webhostapp.com/)
 
 #### Документация на проекта (снимки, схеми и т.н.) се намира в папка Doc
