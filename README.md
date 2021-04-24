@@ -12,11 +12,12 @@
 
 ## Използвани технологии:
 #### Online Website
-* [HTML](https://html.com/)
 * [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+* [D3](https://d3js.org/d3.v3.min.js) (library direct link)
+* [HTML](https://html.com/)
 * [JavaScript](https://www.javascript.com/)
 * [jQuery](https://jquery.com/)
-* [D3](https://d3js.org/d3.v3.min.js) (library direct link)
+* [PHP]
 #### Hardware
 * [MCP39F511](http://ww1.microchip.com/downloads/en/DeviceDoc/20005393B.pdf)
 * [STM32F407](https://www.st.com/en/microcontrollers-microprocessors/stm32f407-417.html)
